@@ -27,7 +27,7 @@
 				<!-- Reset Password -->
 				<div class="login-box" v-if="isShowResetPassword">
 					<div class="login-box-logo">
-						<img src="/public/img/orderonline.png" class="d-block m-auto" alt="OrderOnline">
+						<img src="../assets/logo.png" class="d-block m-auto" alt="Awesome App">
 					</div>
 					<div class="login-error callout callout--danger" v-if="resetPasswordError">
 						<div class="callout__content">{{ resetPasswordError }}</div>
