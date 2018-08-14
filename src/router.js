@@ -4,6 +4,7 @@ import Home from './views/Home.vue';
 
 Vue.use(Router);
 
+console.log(process.env);
 const APP_NAME = process.env.VUE_APP_NAME;
 
 export default new Router({

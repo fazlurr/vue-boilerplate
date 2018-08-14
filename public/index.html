@@ -6,7 +6,7 @@
 		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-PVJJBVD');</script>
+		})(window,document,'script','dataLayer','<%= VUE_APP_GTM_ID %>');</script>
 		<!-- End Google Tag Manager -->
 
 		<!-- WebFont Loader -->
@@ -25,7 +25,7 @@
 		<meta http-equiv="cache-control" content="no-cache">
 		<meta name="language" content="English">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-		<title>Awesome App</title>
+		<title><%= VUE_APP_NAME %></title>
 
 		<link rel="icon" href="<%= BASE_URL %>favicon.ico">
 
@@ -33,11 +33,11 @@
 	</head>
 	<body>
 		<noscript>
-			<strong>We're sorry but vue-boilerplate doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+			<strong>We're sorry but <%= VUE_APP_NAME %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
 		</noscript>
 
 		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVJJBVD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= VUE_APP_GTM_ID %>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!-- End Google Tag Manager (noscript) -->
 
 		<div id="app">
@@ -62,7 +62,7 @@
 		<script>
 			window.fbAsyncInit = function() {
 				FB.init({
-					appId      : '823811741163045',
+					appId      : '<%= VUE_APP_FB_APP_ID %>',
 					cookie     : true,
 					xfbml      : true,
 					version    : 'v3.0'
