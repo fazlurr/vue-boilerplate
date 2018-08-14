@@ -1,29 +1,52 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+	<div id="app">
+		<main-nav v-if="isLoggedIn"></main-nav>
+		<nav class="navbar navbar-main navbar-default text-center" v-if="!isLoggedIn">
+			<router-link class="navbar-brand mx-auto" to="/">
+				<img src="/static/images/logo.png" class="d-inline-block align-top" alt="Awesome App">
+			</router-link>
+		</nav>
+		<main class="main">
+			<router-view/>
+		</main>
+		<site-footer v-if="isLoggedIn"></site-footer>
+	</div>
 </template>
 
+<script>
+import { mapGetters, mapActions } from 'vuex';
+import MainNav from './components/MainNav.vue';
+import Footer from './components/Footer.vue';
+
+export default {
+	name: 'App',
+	components: {
+		'main-nav': MainNav,
+		'site-footer': Footer,
+	},
+	computed: {
+		...mapGetters({
+			isLoggedIn: 'isLoggedIn',
+		}),
+	},
+	methods: {
+		...mapActions([
+			'fetchUser',
+		]),
+	},
+	created() {
+		// Fetch user if logged in
+		if (this.isLoggedIn && !this.user) {
+			this.fetchUser();
+		}
+	},
+	watch: {
+	},
+};
+</script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+@import './assets/scss/main.scss';
 </style>

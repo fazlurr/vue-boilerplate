@@ -1,0 +1,29 @@
+.footer {
+	background-color: #2D2D2D;
+}
+
+.footer__nav {
+	background-color: rgba(255,255,255,.05);
+
+	.nav-link {
+		padding: 1em;
+		color: #bbb;
+		// font-weight: bold;
+		font-size: .85em;
+		// text-transform: uppercase;
+		transition: all .4s ease-in-out;
+
+		&:hover {
+			opacity: .7;
+		}
+	}
+}
+
+.footer__bottom {
+	padding-top: 1.2em;
+	padding-bottom: 1.2em;
+}
+
+.footer-copyright {
+	font-size: .9em;
+}

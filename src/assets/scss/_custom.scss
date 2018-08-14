@@ -1,0 +1,83 @@
+// Multiselect
+
+.multiselect {
+	&.form-control {
+		padding: 0;
+		border: 0;
+		background-color: transparent;
+	}
+
+	&:hover {
+		.multiselect__tags {
+			box-shadow: $shadow-elevate;
+		}
+	}
+}
+
+.multiselect__tags {
+	padding-top: 7px;
+	min-height: 38px;
+	border-radius: 3px;
+	border-color: #ced4da;
+	cursor: pointer;
+}
+
+.multiselect--above .multiselect__content-wrapper {
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+.multiselect__content-wrapper {
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.15);
+}
+
+.multiselect-auto-width {
+	.multiselect__content-wrapper {
+		width: auto;
+		min-width: 100%;
+	}
+}
+
+.multiselect__option--highlight {
+	color: #35495e !important;
+	background-color: #F4F4F4 !important;
+
+	&:after {
+		background-color: $color__primary !important;
+	}
+}
+
+.multiselect__option--selected {
+	&.multiselect__option--highlight {
+		color: #35495e !important;
+		background-color: darken(#f3f3f3, 5%) !important;
+	}
+}
+
+.multiselect-wrapper {
+	position: relative;
+	z-index: 4;
+}
+
+.vdp-datepicker__calendar {
+	padding: 1em;
+	width: 320px;
+
+	.cell {
+		&.selected {
+			color: #fff;
+			background-color: $color__primary;
+		}
+	}
+}
+
+.vue-notification {
+	font-size: .9em !important;
+}
+
+.gradient-bgr {
+	color: #fff;
+	@include gradient(#7d71f5, #4998d7);
+}

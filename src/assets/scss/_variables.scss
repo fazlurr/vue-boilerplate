@@ -1,0 +1,70 @@
+// Colors
+$color__light: #f8f9fa;
+$color__cyan: #75cfd8;
+$color__cyan-dark: #62bbc3;
+$color__cyan-darker: #24a7b3;
+$color__red: #ed1c24;
+$color__red-light: #EE3037;
+$color__red-dark: #dc3545;
+$color__orange: #fbaf5d;
+$color__orange-dark: #fa962b;
+$color__grey: #d7d7da;
+$color__grey-light: #f8f9fa;
+$color__green: #8dc63f;
+$color__green-dark: #3cb878;
+$color__blue-light: #ecf0f1;
+$color__blue-sky: #f8fbff;
+$color__purple-navy: #4E598C;
+$color__ucla-blue: #586994;
+$color__cream: #fbf7eb;
+// $color__yellow: #e4d411;
+$color__yellow: #EDDA10;
+$color__gold: #FFCC29;
+
+$color__primary: $color__cyan;
+$color__secondary: $color__ucla-blue;
+$color__accent: $color__orange;
+// $color__text: #8f8f8f;
+$color__text: #717171;
+$color__text-darker: #1a1a1a;
+$color__link: $color__cyan-darker;
+
+// $color__body-bgr: #f2f3f8;
+$color__body-bgr: #fff;
+$color__border: $color__grey;
+$color__button: #eee;
+$color__bump-background: #fbf7eb;
+$color__bump-checkbox: #f5d765;
+$color__tooltip: #4e4e4e;
+
+// Buy Button Colors
+$color__buy-green: #3cb878;
+$color__buy-orange: #f7941d;
+$color__buy-red: #ed1c24;
+$color__buy-blue: #2eb1ff;
+
+$color__bgr-grey: #eef1f3;
+$color__bgr-black: #222629;
+$color__bgr-brown: #dad6ce;
+$color__bgr-blue: #edf3f3;
+$color__bgr-green: #EDFDEB;
+
+$color__placeholder: #d3d3d3;
+
+$color__row: #f9f9f9;
+
+$color__whatsapp: #25D366;
+$color__facebook: #395A9A;
+
+// Shadows
+$shadow-orderonline: 0 1px 10px -4px #9c9c9c;
+$shadow-mailchimp: 0 1px 0 0 rgba(0,0,0,0.066);
+$shadow-medium: 0 2px 2px -2px rgba(0,0,0,.15);
+$shadow-elevate: 0 2px 3px -1px rgba(0,0,0,.12);
+
+// Borders
+$border-soft: 1px solid rgba(221, 221, 221, 0.65);
+
+// Width
+// $page-width: 1000px;
+$page-width: 960px;

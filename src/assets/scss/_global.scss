@@ -1,0 +1,73 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: $color__text;
+	background-color: $color__body-bgr;
+
+	&.modal-open {
+		overflow: hidden;
+	}
+
+	&.not-found {
+		background-color: $color__bgr-blue;
+		background-size: 30%;
+		background-position: center 75px;
+		background-image: url('/static/images/orderonline-pattern.png');
+	}
+
+	&.login {
+		background-color: $color__bgr-blue;
+		background-position: center 75px;
+		// background-image: url('/static/images/orderonline-pattern.png');
+
+		.navbar-main {
+			display: none;
+		}
+	}
+
+	&.is-blue {
+		background-color: $color__bgr-blue;
+	}
+}
+
+a {
+	color: $color__link;
+
+	&:hover {
+		color: $color__cyan;
+	}
+
+	&.link-light {
+		color: $color__cyan;
+
+		&:hover {
+			color: lighten($color__cyan, 10%);
+		}
+	}
+}
+
+a:not([href]):not([tabindex]) {
+	// color: $color__link;
+	// cursor: pointer;
+
+	// &:hover {
+	// 	color: $color__cyan;
+	// }
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	color: $color__placeholder;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+	color: $color__placeholder;
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+	color: $color__placeholder;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+	color: $color__placeholder;
+}
