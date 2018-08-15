@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'https://api.orderonline.id/';
+const url = process.env.VUE_APP_API_URL;
 const token = localStorage.getItem('token');
 
 const globalResponseHandler = response => response;
