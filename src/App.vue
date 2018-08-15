@@ -3,7 +3,7 @@
 		<main-nav v-if="isLoggedIn"></main-nav>
 		<nav class="navbar navbar-main navbar-default text-center" v-if="!isLoggedIn">
 			<router-link class="navbar-brand mx-auto" to="/">
-				<img src="/static/images/logo.png" class="d-inline-block align-top" alt="Awesome App">
+				<img src="./assets/logo.png" class="d-inline-block align-top" alt="Awesome App">
 			</router-link>
 		</nav>
 		<main class="main">
