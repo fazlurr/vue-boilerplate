@@ -1,0 +1,35 @@
+.picture-wrapper {
+	position: relative;
+	margin-bottom: 1.25rem;
+	width: 6.125rem;
+	height: 6.125rem;
+}
+
+.picture-preview {
+	width: 100%;
+	height: 100%;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.user-form {
+	.picture-preview {
+		border-radius: 50%;
+	}
+}
+
+.picture-edit {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 1.5rem;
+	height: 1.5rem;
+	text-align: center;
+	border-radius: 50%;
+	cursor: pointer;
+
+	i {
+		font-size: 1rem;
+	}
+}

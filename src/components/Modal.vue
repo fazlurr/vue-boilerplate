@@ -16,7 +16,7 @@
 							</button>
 						</div>
 
-						<div class="modal-body">
+						<div class="modal-body" :class="{ 'p-0': full }">
 							<slot name="body">
 								Modal Body
 							</slot>
@@ -36,13 +36,17 @@
 
 <script>
 export default {
-	name: 'modal',
+	name: 'Modal',
 	props: {
 		size: {
 			type: String,
 			default: 'small',
 		},
 		hideFooter: {
+			type: Boolean,
+			default: false,
+		},
+		full: {
 			type: Boolean,
 			default: false,
 		},
@@ -64,3 +68,6 @@ export default {
 	},
 };
 </script>
+
+<style lang="scss">
+</style>

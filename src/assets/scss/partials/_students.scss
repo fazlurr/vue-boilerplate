@@ -1,0 +1,59 @@
+.student {
+	margin-bottom: 1.5rem;
+
+	&-email {
+		font-size: 1rem;
+		font-weight: normal;
+	}
+
+	&-image {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		max-width: 3.375rem;
+		height: 3.375rem;
+		border-radius: 50%;
+		font-size: 1.5rem;
+		font-weight: bold;
+		text-align: center;
+		color: color-yiq(role-color('student')) !important;
+		background-color: role-color('student');
+		text-decoration: none !important;
+	}
+
+	&-description {
+		margin-top: .5625rem;
+		min-height: 3.75rem;
+		font-size: .8125rem;
+		color: $text-secondary;
+	}
+
+	&-hero {
+	}
+}
+
+.students-filter {
+	padding: 1rem 1.5rem;
+	background-color: #ececec;
+	overflow: auto;
+}
+
+.students-filter-list {
+	max-height: 350px;
+	border-bottom: 1px solid #E2E2E2;
+	overflow-y: auto;
+}
+
+.student-filter-item {
+	padding: 1.25rem 1.5rem;
+	border-bottom: 1px solid #E2E2E2;
+	cursor: pointer;
+
+	&:last-child {
+		border-bottom: 0;
+	}
+
+	&:hover {
+		background-color: #f3f3f3;
+	}
+}

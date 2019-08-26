@@ -1,0 +1,14 @@
+.tabs {
+}
+
+.tab-toggle {
+	margin-right: 1.5em;
+	padding: .5em 0;
+	border-bottom: 5px solid transparent;
+	transition: .2s all ease-in-out;
+	cursor: pointer;
+
+	&:last-child {
+		margin-right: 0;
+	}
+}

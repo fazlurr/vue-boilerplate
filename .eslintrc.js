@@ -1,16 +1,15 @@
 module.exports = {
 	root: true,
 	env: {
-		node: true
+		node: true,
 	},
-	'extends': [
+	extends: [
 		'plugin:vue/essential',
-		'@vue/airbnb'
+		'@vue/airbnb',
 	],
 	rules: {
 		'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 		'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-		// disallow reassignment of function parameters
 		// disallow parameter object manipulation except for specific exclusions
 		'no-param-reassign': ['error', {
 			props: true,
@@ -31,8 +30,19 @@ module.exports = {
 		'no-useless-escape': 0,
 		'linebreak-style': 0,
 		'radix': 0,
+		'prefer-destructuring': 0,
 	},
 	parserOptions: {
-		parser: 'babel-eslint'
-	}
-}
+		parser: 'babel-eslint',
+	},
+	overrides: [
+		{
+			files: [
+				'**/__tests__/*.{j,t}s?(x)',
+			],
+			env: {
+				mocha: true,
+			},
+		},
+	],
+};

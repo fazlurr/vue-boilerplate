@@ -1,3 +1,11 @@
+/**
+ * Set Cookie
+ *
+ * @param {string} name Key Name
+ * @param {*} value Value
+ * @param {number} [days] How long the cookie will be stored
+ * @param {string} [domain] Domain Name
+ */
 export const setCookie = (name, value, days, domain) => {
 	let expires = '';
 	if (days) {
@@ -12,6 +20,11 @@ export const setCookie = (name, value, days, domain) => {
 	document.cookie = cookie;
 };
 
+/**
+ * Get Cookie Value by Key
+ *
+ * @param {string} name Key
+ */
 export const getCookie = (name) => {
 	const nameEQ = `${name}=`;
 	const ca = document.cookie.split(';');
@@ -23,6 +36,11 @@ export const getCookie = (name) => {
 	return null;
 };
 
+/**
+ * Remove Cookie Value by Key
+ *
+ * @param {string} name Key
+ */
 export const removeCookie = (name) => {
 	setCookie(name, '', -1);
 };

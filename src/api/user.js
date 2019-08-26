@@ -1,20 +1,9 @@
 import client from '../lib/http-client';
 import { buildQuery } from '../lib/helper';
 
-const endpoint = '/user';
+const endpoint = '/users';
 
 export default {
-	// Auth
-	auth(creds, cb, errorCb) {
-		client.post('/auth', creds)
-			.then((response) => {
-				cb(response.data);
-			})
-			.catch((e) => {
-				errorCb(e);
-			});
-	},
-
 	// Reset Password
 	resetPassword(email, cb, errorCb) {
 		const params = {
@@ -66,47 +55,6 @@ export default {
 			});
 	},
 
-	// Get User Profile
-	getProfile(cb, errorCb) {
-		client.get(endpoint)
-			.then((response) => {
-				cb(response.data);
-			})
-			.catch((e) => {
-				errorCb(e);
-			});
-	},
-
-	// Update User Profile
-	updateProfile(user, cb, errorCb) {
-		client.put(endpoint, user)
-			.then((response) => {
-				cb(response.data);
-			})
-			.catch((e) => {
-				if (errorCb) {
-					errorCb(e);
-				}
-			});
-	},
-
-	// Check Username
-	checkUsername(username, cb, errorCb) {
-		const params = {
-			username,
-		};
-		const url = `${endpoint}/check_username`;
-		client.post(url, params)
-			.then((response) => {
-				cb(response.data);
-			})
-			.catch((e) => {
-				if (errorCb) {
-					errorCb(e);
-				}
-			});
-	},
-
 	// Change Password
 	changePassword(currentPassword, newPassword, cb, errorCb) {
 		const params = {
@@ -125,119 +73,13 @@ export default {
 			});
 	},
 
-	// Update Bank Accounts
-	updateBankAccounts(bankAccounts, cb, errorCb) {
-		const params = {
-			bank_accounts: JSON.stringify(bankAccounts),
-		};
-		const url = `${endpoint}/bank_accounts`;
-		client.put(url, params)
-			.then((response) => {
-				cb(response.data);
-			})
-			.catch((e) => {
-				if (errorCb) {
-					errorCb(e);
-				}
-			});
-	},
-
-	// Update Store
-	updateStore(store, cb, errorCb) {
-		const params = {
-			store: JSON.stringify(store),
-		};
-		const url = `${endpoint}/store`;
-		client.put(url, params)
-			.then((response) => {
-				cb(response.data);
-			})
-			.catch((e) => {
-				if (errorCb) {
-					errorCb(e);
-				}
-			});
-	},
-
-	// Update Username
-	updateUsername(username, cb, errorCb) {
-		const params = {
-			username,
-		};
-		const url = `${endpoint}/username`;
-		client.put(url, params)
-			.then((response) => {
-				cb(response.data);
-			})
-			.catch((e) => {
-				if (errorCb) {
-					errorCb(e);
-				}
-			});
-	},
-
-	// Update Auto Cancel Order
-	updateAutoCancel(autoCancel, cb, errorCb) {
-		const params = {
-			auto_cancel_order: JSON.stringify(autoCancel),
-		};
-		const url = `${endpoint}/auto_cancel_order`;
-		client.put(url, params)
-			.then((response) => {
-				cb(response.data);
-			})
-			.catch((e) => {
-				if (errorCb) {
-					errorCb(e);
-				}
-			});
-	},
-
-	// Update Pixel IDs
-	udpatePixelIds(pixelIds, cb, errorCb) {
-		const params = {
-			pixel_ids: JSON.stringify(pixelIds),
-		};
-		const url = `${endpoint}/pixel_ids`;
-		client.put(url, params)
-			.then((response) => {
-				cb(response.data);
-			})
-			.catch((e) => {
-				if (errorCb) {
-					errorCb(e);
-				}
-			});
-	},
-
-	// Update GTM IDs
-	udpateGTMIds(gtmIds, cb, errorCb) {
-		const params = {
-			gtm_ids: JSON.stringify(gtmIds),
-		};
-		const url = `${endpoint}/gtm_ids`;
-		client.put(url, params)
-			.then((response) => {
-				cb(response.data);
-			})
-			.catch((e) => {
-				if (errorCb) {
-					errorCb(e);
-				}
-			});
-	},
-
 	// Create User
 	create(params, cb, errorCb) {
 		const responseHandler = (response) => {
-			if (cb) {
-				cb(response.data);
-			}
+			if (cb) cb(response.data);
 		};
 		const errorHandler = (e) => {
-			if (errorCb) {
-				errorCb(e);
-			}
+			if (errorCb) errorCb(e);
 		};
 		const url = `${endpoint}`;
 		client.post(url, params)
@@ -245,21 +87,129 @@ export default {
 			.catch(errorHandler);
 	},
 
+	/**
+	 * Create Bulk
+	 *
+	 * @param {Object[]} users Users
+	 * @param {string} users.email Email
+	 * @param {string} users.password Password
+	 * @param {string} users.language Language
+	 * @param {string} users.firstName First Name
+	 * @param {string} users.gender Gender
+	 * @param {*} cb Callback
+	 * @param {*} errorCb Error Callback
+	 */
+	createBulk(users, cb, errorCb) {
+		const url = `${endpoint}/createBulk`;
+		const params = { users: JSON.stringify(users) };
+		const responseHandler = (response) => {
+			if (cb) cb(response.data);
+		};
+		const errorHandler = (e) => {
+			if (errorCb) errorCb(e);
+		};
+		client.post(url, params)
+			.then(responseHandler)
+			.catch(errorHandler);
+	},
+
+	// Get
+	get(id, cb, errorCb) {
+		const url = `${endpoint}/${id}`;
+		const responseHandler = (response) => {
+			if (cb) cb(response.data);
+		};
+		const errorHandler = (e) => {
+			if (errorCb) errorCb(e);
+		};
+		client.get(url)
+			.then(responseHandler)
+			.catch(errorHandler);
+	},
+
+	/**
+	 * Search
+	 *
+	 * @param {string} role Role
+	 * @param {object} params Params
+	 * @param {number} params.page Page
+	 * @param {number} params.limit Limit
+	 * @param {string} params.role Role
+	 * @param {string} params.keyword Keyword
+	 * @param {*} cb Callback
+	 * @param {*} errorCb Error Callback
+	 */
+	search(params, cb, errorCb) {
+		const url = `${endpoint}/search`;
+		const responseHandler = (response) => {
+			if (cb) cb(response.data);
+		};
+		const errorHandler = (e) => {
+			if (errorCb) errorCb(e);
+		};
+		client.get(url, { params })
+			.then(responseHandler)
+			.catch(errorHandler);
+	},
+
+	/**
+	 * Search with Role
+	 *
+	 * @param {string} role Role
+	 * @param {object} params Params
+	 * @param {number} params.page Page
+	 * @param {number} params.limit Limit
+	 * @param {string} params.keyword Keyword
+	 * @param {*} cb Callback
+	 * @param {*} errorCb Error Callback
+	 */
+	searchWithRole(role, params, cb, errorCb) {
+		const url = `${endpoint}/search/${role}`;
+		const responseHandler = (response) => {
+			if (cb) cb(response.data);
+		};
+		const errorHandler = (e) => {
+			if (errorCb) errorCb(e);
+		};
+		client.get(url, { params })
+			.then(responseHandler)
+			.catch(errorHandler);
+	},
+
 	// Get Users
 	getUsers(params, cb, errorCb) {
 		const responseHandler = (response) => {
-			if (cb) {
-				cb(response.data);
-			}
+			if (cb) cb(response.data);
 		};
 		const errorHandler = (e) => {
-			if (errorCb) {
-				errorCb(e);
-			}
+			if (errorCb) errorCb(e);
 		};
 		const query = buildQuery(params);
-		const url = `${endpoint}/lists?${query}`;
+		const url = `${endpoint}?${query}`;
 		client.get(url)
+			.then(responseHandler)
+			.catch(errorHandler);
+	},
+
+	/**
+	 * Get Users by Role
+	 *
+	 * @param {'admin' | 'teacher' | 'student'} role User Role
+	 * @param {Object} params Query Params
+	 * @param {*} cb
+	 * @param {*} errorCb
+	 */
+	getUsersByRole(role, params, cb, errorCb) {
+		const responseHandler = (response) => {
+			if (cb) cb(response.data);
+		};
+		const errorHandler = (e) => {
+			if (errorCb) errorCb(e);
+		};
+		// const query = buildQuery(params);
+		// const url = `${endpoint}/role/${role}?${query}`;
+		const url = `${endpoint}/role/${role}`;
+		client.get(url, { params })
 			.then(responseHandler)
 			.catch(errorHandler);
 	},
@@ -270,7 +220,7 @@ export default {
 			user_ids: JSON.stringify(ids),
 			is_deleted: 1,
 		};
-		const url = `${endpoint}/is_deleted`;
+		const url = `${endpoint}`;
 		const responseHandler = (response) => {
 			if (cb) {
 				cb(response.data);
@@ -281,96 +231,44 @@ export default {
 				errorCb(e);
 			}
 		};
-		client.put(url, params)
+		client.delete(url, { data: params })
 			.then(responseHandler)
 			.catch(errorHandler);
 	},
 
-	// Bulk Change Status
-	bulkChangeStatus(ids, status, cb, errorCb) {
-		const params = {
-			user_ids: JSON.stringify(ids),
-			is_active: status,
-		};
-		const url = `${endpoint}/is_active`;
-		const responseHandler = (response) => {
-			if (cb) {
-				cb(response.data);
-			}
-		};
-		const errorHandler = (e) => {
-			if (errorCb) {
-				errorCb(e);
-			}
-		};
+	// Update user
+	update(id, params, cb, errorCb) {
+		const url = `${endpoint}/${id}`;
 		client.put(url, params)
-			.then(responseHandler)
-			.catch(errorHandler);
+			.then((response) => {
+				if (cb) cb(response.data);
+			})
+			.catch((e) => {
+				if (errorCb) errorCb(e);
+			});
 	},
 
-	// Bulk Change Package
-	bulkChangePackage(ids, packageName, cb, errorCb) {
-		const params = {
-			user_ids: JSON.stringify(ids),
-			package: packageName,
-		};
-		const url = `${endpoint}/package`;
-		const responseHandler = (response) => {
-			if (cb) {
-				cb(response.data);
-			}
-		};
-		const errorHandler = (e) => {
-			if (errorCb) {
-				errorCb(e);
-			}
-		};
-		client.put(url, params)
-			.then(responseHandler)
-			.catch(errorHandler);
+	// Delete user
+	delete(id, cb, errorCb) {
+		const url = `${endpoint}/${id}`;
+		client.delete(url)
+			.then((response) => {
+				if (cb) cb(response.data);
+			})
+			.catch((e) => {
+				if (errorCb) errorCb(e);
+			});
 	},
 
-	// Bulk Change Expired At
-	bulkChangeExpiredDate(ids, expiredDate, cb, errorCb) {
-		const params = {
-			user_ids: JSON.stringify(ids),
-			expired_date: expiredDate,
-		};
-		const url = `${endpoint}/expired_date`;
-		const responseHandler = (response) => {
-			if (cb) {
-				cb(response.data);
-			}
-		};
-		const errorHandler = (e) => {
-			if (errorCb) {
-				errorCb(e);
-			}
-		};
+	// Update user password
+	updatePassword(params, cb, errorCb) {
+		const url = `${endpoint}/${params.id}/password`;
 		client.put(url, params)
-			.then(responseHandler)
-			.catch(errorHandler);
-	},
-
-	// Bulk Change Password
-	bulkChangePassword(ids, password, cb, errorCb) {
-		const params = {
-			user_ids: JSON.stringify(ids),
-			password,
-		};
-		const url = `${endpoint}/password/admin`;
-		const responseHandler = (response) => {
-			if (cb) {
+			.then((response) => {
 				cb(response.data);
-			}
-		};
-		const errorHandler = (e) => {
-			if (errorCb) {
-				errorCb(e);
-			}
-		};
-		client.put(url, params)
-			.then(responseHandler)
-			.catch(errorHandler);
+			})
+			.catch((e) => {
+				if (errorCb) errorCb(e);
+			});
 	},
 };

@@ -1,0 +1,44 @@
+.ProseMirror {
+	padding: 1em 2em;
+
+	&:focus {
+		// outline: 0;
+	}
+}
+
+.editor {
+	background-color: #fff;
+
+	&-bar {
+		padding: .5rem 1rem;
+		border: 1px solid $grey;
+		text-align: right;
+
+		.btn {
+			padding: .5rem;
+			min-width: 0;
+
+			&:hover,
+			&.is-active {
+				background-color: darken($bgr-color-grey, 10%);
+			}
+
+			.text {
+				padding: .25rem;
+				font-size: 1rem;
+			}
+
+			.material-icons {
+				font-size: 1.25rem;
+			}
+		}
+	}
+
+	&-content {
+		border: 1px solid $grey;
+	}
+
+	&-bar ~ &-content {
+		border-top: 0;
+	}
+}

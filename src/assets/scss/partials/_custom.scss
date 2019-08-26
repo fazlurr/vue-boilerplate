@@ -1,0 +1,228 @@
+.profile-image {
+	position: relative;
+	border-radius: 50%;
+	// border: 1px solid #e4e4e4;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	overflow: hidden;
+
+	&.is-empty {
+		background-color: #fff;
+	}
+}
+
+.link-text {
+	color: $text-primary !important;
+}
+
+.link-plain {
+	color: inherit !important;
+
+	&:hover {
+		text-decoration: none !important;
+	}
+}
+
+.search-bar-card {
+	overflow: visible;
+
+	.card-body {
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+}
+
+.search-bar {
+	position: relative;
+
+	.input {
+		padding-left: 2.25rem;
+
+		&:focus {
+			box-shadow: none;
+		}
+	}
+
+	.material-icons {
+		position: absolute;
+		left: .5rem;
+		color: $text-primary;
+	}
+
+	&-small {
+		.card-body {
+			padding: 0;
+		}
+
+		.input {
+			font-size: .9rem;
+		}
+	}
+
+	&-results {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		width: 100%;
+		background-color: #fff;
+		box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
+		z-index: 2;
+	}
+
+	&-result {
+		display: block;
+		padding: 1rem 1.5rem;
+		color: $text-primary !important;
+
+		&:hover {
+			background-color: #f3f3f3;
+		}
+	}
+}
+
+.hero-item {
+	padding: 1.5rem 2.5rem !important;
+}
+
+.hero-stats {
+	margin: 0 auto;
+	max-width: 420px;
+}
+
+.hero-stats-chart {
+	// width: 100%;
+	// height: 100%;
+	min-width: 100px;
+	min-height: 100px;
+
+	&.is-small {
+		min-width: 68px;
+		min-height: 68px;
+	}
+
+	@include media-breakpoint-down(sm) {
+		.material-icons {
+			color: #0AA9D4;
+		}
+	}
+}
+
+.hero-stats-number {
+	font-size: 2.25rem;
+	line-height: 1;
+
+	@include media-breakpoint-down(sm) {
+		font-size: 26px;
+		font-weight: lighter;
+	}
+}
+
+.notifications {
+	z-index: 99999 !important;
+}
+
+.picture-edit {
+	border: 1px solid #fff;
+}
+
+.certification-progress {
+	min-width: 85px;
+
+	&:hover {
+		.circle {
+			// box-shadow: 0 0 5px 0 #c5c5c5;
+		}
+	}
+
+	.circle {
+		border-radius: 50%;
+		background-color: #0EC5F6;
+		overflow: hidden;
+	}
+}
+
+.main-chart-wrapper {
+	padding: 2rem 2.5rem;
+}
+
+.section-title {
+	margin-bottom: 15px;
+	font-size: 1.75rem;
+	font-weight: lighter;
+}
+
+.list-pages {
+}
+
+.list-page {
+	// margin: 0 .75rem;
+	border-radius: 50%;
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	cursor: pointer;
+
+	&-prev,
+	&-next {
+		cursor: pointer;
+	}
+	
+	&-prev {
+		margin-right: .75rem;
+	}
+	
+	&-next {
+		margin-left: .75rem;
+	}
+}
+
+.reminder-course {
+	.course-teacher {
+		min-height: 40px;
+	}
+}
+
+.dot {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: $bgr-color-grey;
+
+	&-warning {
+		background-color: $yellow;
+	}
+
+	&-error {
+		background-color: $red;
+	}
+	
+	&-danger {
+		background-color: #C60000;
+	}
+}
+
+// Cookie
+.Cookie--primary {
+	padding: 1.25em;
+	color: #fff;
+	background-color: $color-student;
+	box-shadow: 1px -3px 5px rgba(0, 0, 0, 0.1);
+
+	.Cookie__button {
+		padding: .5em 3.125em;
+		color: #fff;
+		font-size: 1em;
+		border: 0;
+		border-radius: 2em;
+		text-transform: uppercase;
+		background-color: rgba(0, 0, 0, 0.49);
+
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.3);
+		}
+	}
+}

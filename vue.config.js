@@ -1,3 +1,14 @@
+process.env.VUE_APP_VERSION = require('./package.json').version;
+
 module.exports = {
-	baseUrl: '/',
+	pwa: {
+		name: 'MyProject',
+		msTileColor: '#FFFFFF',
+		// configure workbox plugin
+		workboxPluginMode: 'InjectManifest',
+		workboxOptions: {
+			// navigateFallback: '/index.html',
+			swSrc: 'src/service-worker.js',
+		},
+	},
 };

@@ -1,18 +1,25 @@
 <template>
-  <div class="home">
-	<img alt="Vue logo" src="../assets/logo.png">
-	<HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div class="home">
+		<login v-if="!isLoggedIn" />
+		<dashboard v-if="isLoggedIn" />
+	</div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import { mapGetters } from 'vuex';
+import Login from '@/views/Login.vue';
+import Dashboard from '@/views/Dashboard.vue';
 
 export default {
 	name: 'home',
 	components: {
-		HelloWorld,
+		Login,
+		Dashboard,
+	},
+	computed: {
+		...mapGetters({
+			isLoggedIn: 'isLoggedIn',
+		}),
 	},
 };
 </script>

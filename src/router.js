@@ -9,35 +9,39 @@ const APP_NAME = process.env.VUE_APP_NAME;
 export default new Router({
 	mode: 'history',
 	base: process.env.BASE_URL,
+	// linkActiveClass: 'active',
+	scrollBehavior() {
+		return { x: 0, y: 0 };
+	},
 	routes: [
+		// Dashboard
 		{
 			path: '/',
-			name: 'home',
+			name: 'dashboard',
 			component: Home,
 			meta: {
-				title: `Home - ${APP_NAME}`,
-				gtm: 'Home',
+				title: `Dashboard - ${APP_NAME}`,
+				gtm: 'Dashboard',
 			},
 		},
-		{
-			path: '/about',
-			name: 'about',
-			// route level code-splitting
-			// this generates a separate chunk (about.[hash].js) for this route
-			// which is lazy-loaded when the route is visited.
-			component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
-			meta: {
-				title: `About - ${APP_NAME}`,
-				gtm: 'ABout',
-			},
-		},
+		// Login
 		{
 			path: '/login',
 			name: 'login',
-			component: () => import('./views/Login.vue'),
+			component: () => import(/* webpackChunkName: "login" */ './views/Login.vue'),
 			meta: {
 				title: `Login - ${APP_NAME}`,
 				gtm: 'Login',
+			},
+		},
+		// Logout
+		{
+			path: '/logout',
+			name: 'logout',
+			component: () => import(/* webpackChunkName: "login" */ './views/Logout.vue'),
+			meta: {
+				title: `Logout - ${APP_NAME}`,
+				gtm: 'Logout',
 			},
 		},
 	],
